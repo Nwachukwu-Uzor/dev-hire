@@ -1,0 +1,11 @@
+@use "./mixins.scss" as mixin;
+
+.app {
+  
+}
+
+@include mixin.desktop {
+  .app {
+    
+  }
+}
