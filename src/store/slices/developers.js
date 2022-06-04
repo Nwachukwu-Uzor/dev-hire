@@ -6,13 +6,9 @@ export const developersSlice = createSlice({
     loading: false,
     developers: [],
     favoriteDevelopers: [],
-    count: 0,
     error: null,
   },
   reducers: {
-    increment(state) {
-      state.count++;
-    },
     getAllDevelopersStart(state) {
       state.loading = true;
     },

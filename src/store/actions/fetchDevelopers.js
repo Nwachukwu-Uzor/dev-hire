@@ -5,9 +5,11 @@ import {
   getAllDevelopersFailed,
 } from "../slices/developers";
 
+import {} from "../../config/endpoints.config";
+
 export const fetchDeveloper = () => {
   return async (dispatch) => {
-    dispatch(getAllDevelopersStart);
+    dispatch(getAllDevelopersStart());
 
     try {
       const getDevs = await axios.get(

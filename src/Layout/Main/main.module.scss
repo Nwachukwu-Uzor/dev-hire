@@ -5,12 +5,8 @@
     position: relative;
     min-height: 100vh;
 
-
-    button {
-        padding: 1rem 2rem;
-        background-color: mixins.$blue-color;
-        color: #fff;
-        margin-bottom: 50px;
+    .footerSeperator {
+        height: 50px;
     }
 
     .mainFooter {

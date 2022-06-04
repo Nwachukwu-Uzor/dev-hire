@@ -12,8 +12,9 @@ const Main = () => {
     <div className={styles.main}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="favorite" element={<Favorite />} />
+        {/* <Route path="favorite" element={<Favorite />} /> */}
       </Routes>
+      <div className={styles.footerSeperator}></div>
       <div className={styles.mainFooter}>
         <p>&copy; 2022 DevHire</p>
         <ConversionInput />
