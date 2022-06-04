@@ -21,7 +21,6 @@ export const fetchDevelopers = () => {
       dispatch(getAllDevelopersSuccess(withFavStatus));
     } catch (error) {
       dispatch(getAllDevelopersFailed(error.Message));
-      console.log(error);
     }
   };
 };

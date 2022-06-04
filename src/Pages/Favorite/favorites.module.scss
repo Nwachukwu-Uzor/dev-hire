@@ -1,0 +1,14 @@
+@use "../../mixins.scss" as mixins;
+
+.noFavorite {
+    min-height: 50px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem 1rem;
+    margin-top: 20px;
+    
+    h4 {
+        font-weight: 700;
+        color: mixins.$blue-color;
+    }
+}
