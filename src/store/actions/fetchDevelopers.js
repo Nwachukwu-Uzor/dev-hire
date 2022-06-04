@@ -15,7 +15,10 @@ export const fetchDevelopers = () => {
       const getDevs = await axios.get(getDevelopers);
 
       const developers = await getDevs.data.data.service_search_results.hits;
-      dispatch(getAllDevelopersSuccess(developers));
+      const withFavStatus = developers.map((dev) => {
+        return { ...dev, isFavorite: false };
+      });
+      dispatch(getAllDevelopersSuccess(withFavStatus));
     } catch (error) {
       dispatch(getAllDevelopersFailed(error.Message));
       console.log(error);

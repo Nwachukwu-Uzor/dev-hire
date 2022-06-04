@@ -5,7 +5,7 @@ import Spinner from "../../UI/Spinner/Spinner";
 import styles from "./home.module.scss";
 
 const Home = () => {
-  const { loading, error, developers } = useSelector(
+  const { loading, error, developers, favoriteDevelopers } = useSelector(
     (state) => state.developers
   );
 

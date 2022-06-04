@@ -26,22 +26,33 @@ export const developersSlice = createSlice({
         JSON.stringify(state.favoriteDevelopers)
       );
 
+      console.log("hello");
       const dev = developers.find(
         (developer) => developer._source.profile_id === payload
       );
 
-      console.log(dev);
+      dev.isFavorite = true;
 
-      favoriteDevelopers.push(dev);
-
-      console.log(favoriteDevelopers);
-      state.favoriteDevelopers = favoriteDevelopers;
+      const myFav = developers.filter((dev) => dev.isFavorite);
+      state.developers = developers;
+      state.favoriteDevelopers = myFav;
     },
     removeFromFavorite(state, { payload }) {
-      console.log(payload);
-      state.favoriteDevelopers.filter(
-        (dev) => dev._source.profile_id !== payload
+      const developers = JSON.parse(JSON.stringify(state.developers));
+      const favoriteDevelopers = JSON.parse(
+        JSON.stringify(state.favoriteDevelopers)
       );
+
+      console.log("hello");
+      const dev = developers.find(
+        (developer) => developer._source.profile_id === payload
+      );
+
+      dev.isFavorite = false;
+
+      const myFav = developers.filter((dev) => dev.isFavorite);
+      state.developers = developers;
+      state.favoriteDevelopers = myFav;
     },
   },
 });

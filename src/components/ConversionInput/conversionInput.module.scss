@@ -3,7 +3,6 @@
 .optionForm {
     width: 50%;
     
-
     .inputHolder {
         display: flex;
         justify-content: space-between;
@@ -13,6 +12,10 @@
         border: 1px solid #8692A6;
         border-radius: 6px;
         width: 100%;
+
+        .optionFormFocused {
+            border: 5px solid mixins.$blue-color;
+        }
     }
 
     .flag {

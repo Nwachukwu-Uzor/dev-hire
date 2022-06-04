@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { switchCurrency } from "../../store/slices/currencies";
 
@@ -9,23 +9,35 @@ const ConversionInput = () => {
     (state) => state.currencies
   );
 
+  const [focus, setFocused] = useState(false);
+
+  const handleFocus = () => setFocused(true);
+  const handleBlur = () => setFocused(false);
+
   const dispatch = useDispatch();
 
   const handleCurrencySwitch = (e) => {
     dispatch(switchCurrency(e.target.value));
-    // console.log(e.target.value);
   };
 
   return (
     <div className={styles.optionForm}>
       {!loading && currentCurrency !== null && (
-        <div className={styles.inputHolder}>
+        <div
+          className={`${styles.inputHolder} ${
+            focus && styles.optionFormFocused
+          }`}
+        >
           <img
             src={currentCurrency.flag_url}
             alt={currentCurrency.name}
             className={styles.flag}
           />
-          <select onChange={handleCurrencySwitch}>
+          <select
+            onChange={handleCurrencySwitch}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          >
             {currencies.map((currency) => (
               <option
                 className={styles.option}

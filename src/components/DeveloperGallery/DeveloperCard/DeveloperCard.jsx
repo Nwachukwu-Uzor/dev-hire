@@ -8,12 +8,10 @@ import {
 
 import styles from "./developerCard.module.scss";
 
-const DeveloperCard = ({ developerDetail }) => {
+const DeveloperCard = ({ developerDetail, isFavorite }) => {
   const dispatch = useDispatch();
   const { currentCurrency } = useSelector((state) => state.currencies);
   const { symbol, divider } = currentCurrency;
-
-  const [isFavorite, setIsFavorite] = useState(false);
 
   const {
     avatar,
@@ -26,7 +24,6 @@ const DeveloperCard = ({ developerDetail }) => {
   } = developerDetail;
 
   const handleFavoriteChange = () => {
-    setIsFavorite((isFavorite) => !isFavorite);
     if (isFavorite) {
       dispatch(removeFromFavorite(profile_id));
       return;
