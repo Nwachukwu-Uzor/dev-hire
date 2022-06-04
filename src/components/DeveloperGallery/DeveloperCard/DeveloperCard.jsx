@@ -1,7 +1,20 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  removeFromFavorite,
+  addToFavorite,
+} from "../../../store/slices/developers";
+
 import styles from "./developerCard.module.scss";
 
 const DeveloperCard = ({ developerDetail }) => {
-  const isFavorite = true;
+  const dispatch = useDispatch();
+  const { currentCurrency } = useSelector((state) => state.currencies);
+  const { symbol, divider } = currentCurrency;
+
+  const [isFavorite, setIsFavorite] = useState(false);
+
   const {
     avatar,
     service_photo,
@@ -9,7 +22,18 @@ const DeveloperCard = ({ developerDetail }) => {
     display_name,
     service_description,
     service_expression,
+    profile_id,
   } = developerDetail;
+
+  const handleFavoriteChange = () => {
+    setIsFavorite((isFavorite) => !isFavorite);
+    if (isFavorite) {
+      dispatch(removeFromFavorite(profile_id));
+      return;
+    }
+    dispatch(addToFavorite(profile_id));
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.images}>
@@ -21,6 +45,7 @@ const DeveloperCard = ({ developerDetail }) => {
         <img src={avatar} alt={service_expression} className={styles.avatar} />
         <div
           className={`${styles.favoriteIcon} ${isFavorite && styles.favorite}`}
+          onClick={handleFavoriteChange}
         >
           <i className={`fa-solid fa-heart ${styles.icon}`}></i>
         </div>
@@ -28,7 +53,9 @@ const DeveloperCard = ({ developerDetail }) => {
       <div className={styles.action}>
         <div className={styles.bio}>
           <h4>{display_name}</h4>
-          <p>N{starting_from}</p>
+          <p>
+            {symbol} {(starting_from / divider).toFixed(2)}
+          </p>
         </div>
         <h4 className={styles.actionLink}>Hire</h4>
       </div>

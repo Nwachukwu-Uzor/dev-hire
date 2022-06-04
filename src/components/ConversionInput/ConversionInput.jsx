@@ -1,20 +1,44 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { switchCurrency } from "../../store/slices/currencies";
+
 import styles from "./conversionInput.module.scss";
 
 const ConversionInput = () => {
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
+  const { loading, currencies, currentCurrency } = useSelector(
+    (state) => state.currencies
+  );
+
+  const dispatch = useDispatch();
+
+  const handleCurrencySwitch = (e) => {
+    dispatch(switchCurrency(e.target.value));
+    // console.log(e.target.value);
   };
+
   return (
-    <form onSubmit={handleFormSubmit} className={styles.optionForm}>
-      <img
-        src="./assets/nigerian-flag.jpg"
-        alt="flag"
-        className={styles.flag}
-      />
-      <select>
-        <option className={styles.option}>Name</option>
-      </select>
-    </form>
+    <div className={styles.optionForm}>
+      {!loading && currentCurrency !== null && (
+        <div className={styles.inputHolder}>
+          <img
+            src={currentCurrency.flag_url}
+            alt={currentCurrency.name}
+            className={styles.flag}
+          />
+          <select onChange={handleCurrencySwitch}>
+            {currencies.map((currency) => (
+              <option
+                className={styles.option}
+                key={currency.id}
+                value={currency.id}
+              >
+                {currency.short}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+    </div>
   );
 };
 

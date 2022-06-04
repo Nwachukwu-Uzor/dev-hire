@@ -5,16 +5,14 @@ import {
   getAllDevelopersFailed,
 } from "../slices/developers";
 
-import {} from "../../config/endpoints.config";
+import { getDevelopers } from "../../config/endpoints.config";
 
-export const fetchDeveloper = () => {
+export const fetchDevelopers = () => {
   return async (dispatch) => {
     dispatch(getAllDevelopersStart());
 
     try {
-      const getDevs = await axios.get(
-        "https://api.terawork.com/service-categories/sellers-services/computer-software-development"
-      );
+      const getDevs = await axios.get(getDevelopers);
 
       const developers = await getDevs.data.data.service_search_results.hits;
       dispatch(getAllDevelopersSuccess(developers));
