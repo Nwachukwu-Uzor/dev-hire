@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 
 import styles from "./sidebar.module.scss";
 
+import logo from "../../../assets/Logo.png";
+
 const Sidebar = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
 
@@ -16,7 +18,7 @@ const Sidebar = () => {
         onClick={handleOpenSidebar}
       ></i>
       <div className={`${styles.sidebar} ${!openSidebar && styles.closed}`}>
-        <img className={styles.logo} src="./assets/Logo.png" alt="logo" />
+        <img className={styles.logo} src={logo} alt="logo" />
         <i
           className={`fa-solid fa-xmark ${styles.closeIcon}`}
           onClick={handleOpenSidebar}

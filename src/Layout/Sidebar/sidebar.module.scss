@@ -37,6 +37,8 @@
 
     .navLinks {
         list-style: none;
+        width: 100%;
+        text-align: center;
 
             .navLink {
                 text-decoration: none;
@@ -44,6 +46,10 @@
                 margin: 1rem auto;
                 font-weight: 700;
                 color: #0000006E;
+                font-size: 1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 i {
                     margin-right: 0.75rem;
@@ -54,6 +60,8 @@
 
                 &.activeLink {
                     color: #14142B;
+                    border-left: 7px solid mixins.$blue-color;
+                    border-radius: 5px;
 
                     i {
                         background-color: mixins.$blue-color;
@@ -76,6 +84,16 @@
 
         .logo {
             height: 30px;
+        }
+
+        .navLinks {
+            .navLink {
+                font-size: 1.25rem;
+
+                i {
+                    font-size: 0.85rem;
+                }
+            }
         }
 
         .closeIcon {
