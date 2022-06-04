@@ -1,0 +1,97 @@
+@use "../../mixins.scss" as mixins;
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 25%;
+    border: 1px solid #D9DBE9;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    flex-direction: column;
+    background-color: #fff;
+
+    transition: all 0.25s ease-out;
+
+
+    .logo {
+        height: 20px;
+    }
+
+    .closeIcon {
+        color: mixins.$blue-color;
+        position: absolute;
+        z-index: 999;
+        font-size: 1rem;
+        right: 1rem;
+        top: 1rem;
+    }
+
+    &.closed {
+        right: unset;
+        left: -100%;
+    }
+
+    .navLinks {
+        list-style: none;
+
+        li {
+            margin-top: 1.25rem;
+
+            a {
+                text-decoration: none;
+                color:#0000006E;
+                font-weight: 700;
+
+                &.activeLink {
+                    color: #14142B;
+                    font-weight: 700;
+                }
+
+                i {
+                    margin-right: 0.75rem;
+                }
+        
+                &:link, &:visited {
+                    color: inherit;
+                    font-weight: inherit;
+                }
+            }
+        }
+
+       
+    }
+}
+
+.openIcon {
+    margin: 0.75rem;
+    color: mixins.$blue-color;
+}
+ 
+
+@include mixins.desktop {
+    .sidebar {
+        position: static;
+
+        .logo {
+            height: 30px;
+        }
+
+        .closeIcon {
+            display: none;
+        }
+
+        .navLinks {
+            li {
+                margin-top: 2rem;
+            }
+        }
+    }
+
+    .openIcon {
+        display: none;
+    }
+}

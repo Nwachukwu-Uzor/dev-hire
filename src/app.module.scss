@@ -1,11 +1,16 @@
 @use "./mixins.scss" as mixin;
 
 .app {
-  
+  position: relative;
 }
 
 @include mixin.desktop {
   .app {
-    
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    align-items: stretch;
+    justify-content: space-between;
+    grid-gap: 1rem;
+    min-height: 100vh;
   }
 }
