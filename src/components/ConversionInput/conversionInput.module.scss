@@ -28,15 +28,18 @@
         padding: 0.25rem 0.5rem;
         background-color: transparent;
         border: none;
+        outline: none;
 
         &:active, &:focus {
             option {
                 border: none;
+                outline: none;
             }
         }
         option {
             &:active, &:focus {
                 border: none;
+                outline: none;
             }
         }
         
