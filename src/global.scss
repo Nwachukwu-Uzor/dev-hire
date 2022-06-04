@@ -17,3 +17,19 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
 }
+
+h1 {
+  font-size: 1.25rem;
+}
+
+@include mixins.tablet {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@include mixins.desktop {
+  h1 {
+    font-size: 1.75rem;
+  }
+}
