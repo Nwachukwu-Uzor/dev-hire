@@ -1,4 +1,6 @@
+@use "./mixins.scss" as mixins;
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;700&display=swap');
+
 
 * {
   margin: 0;
@@ -10,4 +12,8 @@
 body {
   font-family: 'Poppins', sans-serif;
   color:  #14142B;
+  background-color: mixins.$main-background;
+  max-width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
 }

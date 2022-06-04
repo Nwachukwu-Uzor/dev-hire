@@ -1,0 +1,96 @@
+@use "../../../mixins.scss" as mixins;
+$avatar-size: 44px;
+
+.card {
+    width: 100%;
+    padding: 1rem 5px;
+    padding-top: 0;
+    background-color: #fff;
+    border-radius: 10px;
+
+    .images {
+        position: relative;
+
+        .mainImage {
+            display: block;
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .avatar {
+            width: $avatar-size;
+            height: $avatar-size;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            left: 13px;
+            bottom: calc($avatar-size / -2);
+            transform: tranlateY(-50%);
+            border: 3px solid mixins.$main-background;
+        }
+    }
+
+    .favoriteIcon {
+        height: 35px;
+        width: 35px;
+        background-color: #BBBBBB;;
+        border-radius: 10px;
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .icon {
+            color: #fff;
+        }
+
+        &.favorite {
+            background-color: #fff;
+
+            .icon {
+                color: #FF4135;
+            }
+        }
+    }
+
+    .action {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+
+        p, h4 {
+            font-size: 0.75rem;
+        }
+        h4 {
+            font-weight: 700;
+        }
+
+        .actionLink {
+            color: mixins.$blue-color;
+        }
+    }
+}
+
+@include mixins.tablet {
+    .card {
+        .images {
+            .mainImage {
+                height: 175px;
+            }
+        }
+    }
+}
+
+@include mixins.desktop {
+    .card {
+        .images {
+            .mainImage {
+                height: 139px;
+            }
+        }
+    }
+}

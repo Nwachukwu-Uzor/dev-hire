@@ -1,0 +1,21 @@
+@use "../../../mixins.scss";
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: space-between;
+    grid-gap: 2rem;
+    margin-top: 2rem;
+}
+
+@include mixins.tablet {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@include mixins.desktop {
+    .gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

@@ -1,0 +1,38 @@
+@use "../../mixins.scss" as mixins;
+
+.main {
+    padding: 2rem 1rem;
+    position: relative;
+    min-height: 100vh;
+
+
+    button {
+        padding: 1rem 2rem;
+        background-color: mixins.$blue-color;
+        color: #fff;
+        margin-bottom: 50px;
+    }
+
+    .mainFooter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 2rem 1rem;
+    }
+}
+
+
+
+@include mixins.desktop {
+    .main {
+        padding: inherit 2rem;
+
+        .mainFooter {
+            padding: inherit 2rem;
+        }
+    }
+}

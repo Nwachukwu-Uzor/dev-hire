@@ -1,5 +1,8 @@
-import styles from "./sidebar.module.scss";
 import { useState } from "react";
+
+import { NavLink } from "react-router-dom";
+
+import styles from "./sidebar.module.scss";
 
 const Sidebar = () => {
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -18,20 +21,28 @@ const Sidebar = () => {
           className={`fa-solid fa-xmark ${styles.closeIcon}`}
           onClick={handleOpenSidebar}
         ></i>
-        <ul className={styles.navLinks}>
-          <li>
-            <a href="#" className={styles.activeLink}>
-              <i className="fa-solid fa-magnifying-glass"></i>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="fa-regular fa-heart"></i>
-              Favorite
-            </a>
-          </li>
-        </ul>
+        <nav className={styles.navLinks}>
+          <NavLink
+            to="/"
+            className={(data) =>
+              `${styles.navLink} ${data.isActive && styles.activeLink}`
+            }
+            onClick={handleOpenSidebar}
+          >
+            <i className="fa-solid fa-magnifying-glass"></i>
+            Home
+          </NavLink>
+          <NavLink
+            to="/favorite"
+            onClick={handleOpenSidebar}
+            className={(data) =>
+              `${styles.navLink} ${data.isActive && styles.activeLink}`
+            }
+          >
+            <i className="fa-regular fa-heart"></i>
+            Favorite
+          </NavLink>
+        </nav>
       </div>
     </>
   );
