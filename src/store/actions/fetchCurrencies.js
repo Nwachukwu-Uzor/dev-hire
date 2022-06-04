@@ -16,7 +16,7 @@ export const fetchCurrencies = () => {
       const res = await axios.get(getCurrencies);
       const currencies = await res.data.data.currencies;
       dispatch(getCurrenciesSuccess(currencies));
-      dispatch(switchCurrency(currencies[1].id));
+      dispatch(switchCurrency(currencies[0].id));
     } catch (error) {
       dispatch(getCurrenciesFailed(error.Message));
     }
