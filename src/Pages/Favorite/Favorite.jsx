@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import Gallery from "../../components/DeveloperGallery/Gallery/Gallery";
+import Gallery from "../../components/Gallery/Gallery";
 
 import styles from "./favorites.module.scss";
 

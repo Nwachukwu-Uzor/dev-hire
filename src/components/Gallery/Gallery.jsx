@@ -1,4 +1,4 @@
-import DeveloperCard from "../DeveloperCard/DeveloperCard";
+import DeveloperCard from "./DeveloperCard/DeveloperCard";
 import styles from "./gallery.module.scss";
 
 const Gallery = ({ developers }) => {

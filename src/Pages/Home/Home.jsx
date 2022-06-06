@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 
-import Gallery from "../../components/DeveloperGallery/Gallery/Gallery";
+import Gallery from "../../components/Gallery/Gallery";
 import Spinner from "../../UI/Spinner/Spinner";
 import styles from "./home.module.scss";
 
 const Home = () => {
-  const { loading, error, developers, favoriteDevelopers } = useSelector(
+  const { loading, error, developers } = useSelector(
     (state) => state.developers
   );
 
