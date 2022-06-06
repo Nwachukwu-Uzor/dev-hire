@@ -1,10 +1,6 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  removeFromFavorite,
-  addToFavorite,
-} from "../../../store/slices/developers";
+import { setFavoriteStatus } from "../../../store/slices/developers";
 
 import styles from "./developerCard.module.scss";
 
@@ -24,11 +20,7 @@ const DeveloperCard = ({ developerDetail, isFavorite }) => {
   } = developerDetail;
 
   const handleFavoriteChange = () => {
-    if (isFavorite) {
-      dispatch(removeFromFavorite(profile_id));
-      return;
-    }
-    dispatch(addToFavorite(profile_id));
+    dispatch(setFavoriteStatus(profile_id));
   };
 
   return (

@@ -20,31 +20,30 @@ export const developersSlice = createSlice({
       state.error = payload;
       state.loading = false;
     },
-    addToFavorite(state, { payload }) {
-      const developers = JSON.parse(JSON.stringify(state.developers));
-
-      const dev = developers.find(
-        (developer) => developer._source.profile_id === payload
-      );
-
-      dev.isFavorite = true;
-
-      const myFav = developers.filter((dev) => dev.isFavorite);
-      state.developers = developers;
-      state.favoriteDevelopers = myFav;
-    },
-    removeFromFavorite(state, { payload }) {
+    setFavoriteStatus(state, { payload }) {
       const developers = JSON.parse(JSON.stringify(state.developers));
       const dev = developers.find(
         (developer) => developer._source.profile_id === payload
       );
 
-      dev.isFavorite = false;
+      dev.isFavorite = !dev.isFavorite;
 
       const myFav = developers.filter((dev) => dev.isFavorite);
       state.developers = developers;
       state.favoriteDevelopers = myFav;
     },
+    // removeFromFavorite(state, { payload }) {
+    //   const developers = JSON.parse(JSON.stringify(state.developers));
+    //   const dev = developers.find(
+    //     (developer) => developer._source.profile_id === payload
+    //   );
+
+    //   dev.isFavorite = false;
+
+    //   const myFav = developers.filter((dev) => dev.isFavorite);
+    //   state.developers = developers;
+    //   state.favoriteDevelopers = myFav;
+    // },
   },
 });
 
@@ -53,8 +52,7 @@ export const {
   getAllDevelopersStart,
   getAllDevelopersSuccess,
   getAllDevelopersFailed,
-  addToFavorite,
-  removeFromFavorite,
+  setFavoriteStatus,
 } = developersSlice.actions;
 
 export default developersSlice.reducer;
